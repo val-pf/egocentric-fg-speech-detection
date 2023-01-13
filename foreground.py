@@ -65,7 +65,8 @@ def inference(dataloader, model, outfile, device):
     out_data = []
 
     with torch.no_grad():
-        for audio_file, audio_input in tqdm(dataloader):
+        for audio_file, audio_input in dataloader:
+            print(audio_file)
             audio_input = audio_input.to(device)
             audio_output = audio_model(audio_input)
             audio_output_smax = smax(audio_output)
